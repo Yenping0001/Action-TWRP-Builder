@@ -11,15 +11,7 @@ on:
         description: 'MANIFEST_BRANCH'
         required: true
         default: 'twrp-12.1'
-      DEVICE_TREE_URL:
-        description: 'DEVICE_TREE_URL'
-        required: true
-        default: 'https://github.com/TeamWin/android_device_asus_I003D'
-      DEVICE_TREE_BRANCH:
-        description: 'DEVICE_TREE_BRANCH'
-        required: true
-        default: 'android-12.1'
-
+        
 jobs:
   sync_and_debug:
     if: github.event.repository.owner.id == github.event.sender.id
@@ -68,7 +60,8 @@ jobs:
 
     - name: Clone device tree
       run: |
-        git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
+
+       git clone -b a32x-twrp https://github.com/Yenping0001/android_device_samsung_a32x.git device/samsung/a32x
       working-directory: workspace
 
     - name: Clone common tree
